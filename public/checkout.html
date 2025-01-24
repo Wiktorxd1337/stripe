@@ -14,7 +14,7 @@
           <h5>$20.00</h5>
         </div>
       </div>
-      <button id="checkout-button">Checkout</button> <!-- Zmienione z formularza na przycisk -->
+      <button id="checkout-button">Checkout</button>
     </section>
 
     <script>
@@ -34,9 +34,14 @@
           });
 
           const session = await response.json();
+          console.log('Odpowiedź z backendu:', session); // Logowanie do konsoli
 
-          // Przekierowanie użytkownika do Stripe
-          window.location.href = session.url;
+          // Sprawdź, czy session.url istnieje
+          if (session.url) {
+            window.location.href = session.url; // Przekierowanie do Stripe
+          } else {
+            throw new Error('Brak adresu URL sesji Stripe.');
+          }
         } catch (error) {
           console.error('Błąd:', error);
           alert('Wystąpił błąd podczas tworzenia sesji płatności.');
