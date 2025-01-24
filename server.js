@@ -1,4 +1,4 @@
-const express = require('express');
+onst express = require('express');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const app = express();
 
@@ -16,7 +16,7 @@ app.post('/create-checkout-session', async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
-          price: 'price_1QdYONGgU76qWzUhF641h7Dr', // Zastąp rzeczywistym Price ID z Stripe
+          price: 'price_1QdaCgGgU76qWzUhu1w41Tsx', // Zastąp rzeczywistym Price ID z Stripe
           quantity: 1,
         },
       ],
@@ -32,4 +32,21 @@ app.post('/create-checkout-session', async (req, res) => {
 });
 
 // Uruchomienie serwera
-module.exports = app;
+module.exports = app;" font end "<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buy cool new product</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <section>
+      <div class="product">
+        <img src="https://i.imgur.com/EHyR2nP.png" alt="The cover of Stubborn Attachments" />
+        <div class="description">
+          <h3>Stubborn Attachments</h3>
+          <h5>$20.00</h5>
+        </div>
+      </div>
+      <button id="checkout-button">Checkout</button>
+    </section>
