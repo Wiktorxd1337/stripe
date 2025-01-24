@@ -21,8 +21,8 @@ app.post('/create-checkout-session', async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: 'stripe-tau-ashy.vercel.app/success', // Zastąp swoją domeną frontendu
-      cancel_url: 'stripe-tau-ashy.vercel.app/cancel', // Zastąp swoją domeną frontendu
+      success_url: 'stripe-tau-ashy.vercel.app/success.html', // Zastąp swoją domeną frontendu
+      cancel_url: 'stripe-tau-ashy.vercel.app/cancel.html', // Zastąp swoją domeną frontendu
     });
 
     res.json({ id: session.id });
