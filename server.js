@@ -7,7 +7,7 @@ app.use(express.static('public'));
 
 // Obsługa ścieżki głównej
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/checkout.html'); // Zwróć plik HTML
+  res.sendFile(__dirname + '/public/checkout.html'); // Zwróć plik HTML
 });
 
 // Endpoint do tworzenia sesji płatności Stripe
