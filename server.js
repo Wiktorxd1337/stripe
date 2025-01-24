@@ -8,7 +8,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // Stała z adresem Twojej domeny
-const YOUR_DOMAIN = 'https://yourwebsite.com'; // Zastąp swoim adresem
+const YOUR_DOMAIN = 'stripe-tau-ashy.vercel.app'; // Zastąp swoim adresem
 
 // Endpoint do tworzenia sesji płatności Stripe
 app.post('/create-checkout-session', async (req, res) => {
