@@ -16,7 +16,7 @@ app.post('/create-checkout-session', async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
-          price: '{{PRICE_ID}}', // Zastąp rzeczywistym Price ID z Stripe
+          price: 'price_1QdaCgGgU76qWzUhu1w41Tsx', // Zastąp rzeczywistym Price ID z Stripe
           quantity: 1,
         },
       ],
