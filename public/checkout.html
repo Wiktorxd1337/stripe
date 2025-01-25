@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,7 +19,7 @@
 
     <script>
       // Inicjalizacja Stripe z kluczem publicznym
-      const stripe = Stripe('pk_live_51Q8MRNGgU76qWzUhtwgrKkn0nMDk3EjqHsN4y8PBib5f1MbkznOB6NJVB7T69G8A8NbHKfTq245eZiqpZNlC94uJ009pfHgyKf'); // Zastąp swoim kluczem publicznym Stripe
+      const stripe = Stripe('pk_test_51Q8MRNGgU76qWzUhtwgrKkn0nMDk3EjqHsN4y8PBib5f1MbkznOB6NJVB7T69G8A8NbHKfTq245eZiqpZNlC94uJ009pfHgyKf'); // Użyj klucza testowego
 
       // Obsługa kliknięcia przycisku "Checkout"
       const checkoutButton = document.getElementById('checkout-button');
@@ -37,15 +36,17 @@
           const session = await response.json();
           console.log('Odpowiedź z backendu:', session); // Logowanie do konsoli
 
-          // Sprawdź, czy session.url istnieje
-          if (session.url) {
-            window.location.href = session.url; // Przekierowanie do Stripe
-          } else {
-            throw new Error('Brak adresu URL sesji Stripe.');
+          // Przekierowanie do Stripe Checkout
+          const { error } = await stripe.redirectToCheckout({
+            sessionId: session.id,
+          });
+
+          if (error) {
+            throw new Error(error.message);
           }
         } catch (error) {
           console.error('Błąd:', error);
-          alert('Wystąpił błąd podczas tworzenia sesji płatności.');
+          alert('Wystąpił błąd podczas tworzenia sesji płatności: ' + error.message);
         }
       });
     </script>
